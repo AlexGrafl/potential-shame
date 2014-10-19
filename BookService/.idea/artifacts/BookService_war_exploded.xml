@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BookService:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/BookService_war_exploded.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="BookService/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BookService" />
+          <element id="jpa-descriptors" facet="BookService/jpa/JPA" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="ejb-3.2" />
+          <element id="library" level="project" name="JPA 2.0-2.0" />
+          <element id="library" level="project" name="libs" />
+          <element id="library" level="project" name="org.glassfish.jersey.containers.glassfish:jersey-gf-cdi:2.13" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="BookService/ejb/EJB" />
+      <element id="javaee-facet-resources" facet="BookService/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

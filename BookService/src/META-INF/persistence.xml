@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="BookService">
+        <jta-data-source>java:jboss/datasources/BookServiceDS</jta-data-source>
+        <class>at.sks.bookservice.entities.Publisher</class>
+        <class>at.sks.bookservice.entities.Book</class>
+        <class>at.sks.bookservice.entities.Author</class>
+    </persistence-unit>
+
+</persistence>

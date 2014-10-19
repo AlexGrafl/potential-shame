@@ -1,0 +1,38 @@
+<component name="libraryTable">
+  <library name="org.glassfish.jersey.containers.glassfish:jersey-gf-cdi:2.13" type="repository">
+    <properties maven-id="org.glassfish.jersey.containers.glassfish:jersey-gf-cdi:2.13" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jersey-gf-cdi-2.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/weld-osgi-bundle-2.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/cdi-api-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/weld-api-2.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/weld-core-2.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/weld-spi-2.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jboss-classfilewriter-1.0.4.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jboss-annotations-api_1.2_spec-1.0.0.Alpha1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/guava-13.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jboss-interceptors-api_1.2_spec-1.0.0.Alpha3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/slf4j-ext-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/slf4j-api-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/cal10n-api-0.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/javax.transaction-api-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jersey-server-2.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jersey-common-2.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/javax.ws.rs-api-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/javax.annotation-api-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jersey-guava-2.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/hk2-api-2.3.0-b10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/hk2-utils-2.3.0-b10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/aopalliance-repackaged-2.3.0-b10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/javax.inject-2.3.0-b10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/hk2-locator-2.3.0-b10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/javassist-3.18.1-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/osgi-resource-locator-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/jersey-client-2.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi/validation-api-1.1.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

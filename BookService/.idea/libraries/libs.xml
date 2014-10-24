@@ -22,6 +22,8 @@
       <root url="jar://$PROJECT_DIR$/lib/libs/stax2-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/streambuffer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/woodstox-core-asl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libs/jaxb-jxc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libs/jaxb-core.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

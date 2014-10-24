@@ -1,5 +1,6 @@
 package at.sks.bookservice.soap;
 
+import at.sks.bookservice.entities.Book;
 import at.sks.bookservice.entities.Publisher;
 
 import javax.jws.WebMethod;
@@ -13,4 +14,10 @@ import java.util.List;
 public interface BookServiceSOAPService {
     @WebMethod
     public List<Publisher> getAllPublishers();
+
+    @WebMethod
+    public List<Book> getBooksByTitle(String title);
+
+    @WebMethod
+    public void createBook(Book book);
 }

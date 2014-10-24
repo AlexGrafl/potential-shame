@@ -1,6 +1,7 @@
 package at.sks.bookservice.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -10,37 +11,33 @@ import java.util.List;
 
 @Entity
 @Table(name = "author")
-@NamedQuery(name = "Author.selectAll", query = "select n from Author n")
-public class Author {
-    @Id
-    @GeneratedValue
-    @Column(name = "idauthor")
-    private long authorId;
+@NamedQueries({
+        @NamedQuery(name = "Author.selectAll", query = "select a from Author a"),
+        @NamedQuery(name = "Author.getAuthorById", query = "select a from Author a where a.id = :id")
+})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Author extends AbstractEntity {
+
     private String firstName;
     private String lastName;
     private String country;
     private Date birthDate;
 
-    @ManyToMany (mappedBy = "authors")
+
+    @ManyToMany (targetEntity = Book.class, mappedBy = "authors")
+    @XmlElementWrapper
+    @XmlElement(name = "book")
     private List<Book> books;
 
     public Author() { }
 
-    public Author(long authorId, String firstName, String lastName, String country, Date birthDate, List<Book> books) {
-        this.authorId = authorId;
+    public Author(String firstName, String lastName, String country, Date birthDate, List<Book> books) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.birthDate = birthDate;
         this.books = books;
-    }
-
-    public long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(long authorId) {
-        this.authorId = authorId;
     }
 
     public String getFirstName() {
@@ -86,12 +83,10 @@ public class Author {
     @Override
     public String toString() {
         return "Author{" +
-                "authorId=" + authorId +
-                ", firstName='" + firstName + '\'' +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", country='" + country + '\'' +
                 ", birthDate=" + birthDate +
-                ", books=" + books +
                 '}';
     }
 }

@@ -1,24 +1,35 @@
 package at.sks.bookservice.services;
 
-import at.sks.bookservice.entities.Book;
 import at.sks.bookservice.entities.Publisher;
 
 import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * @author Alex
  */
-@Stateless
-@LocalBean
-public class PublisherService {
-    @PersistenceContext
-    private EntityManager em;
+@Transactional
+@Stateful
+public class PublisherService extends AbstractEntityService<Publisher> {
+
+    public PublisherService() {
+        super(Publisher.class);
+    }
 
     public List<Publisher> getAllPublisher(){
-        return em.createNamedQuery("Publisher.selectAll", Publisher.class).getResultList();
+        return entityManager.createNamedQuery("Publisher.selectAll", Publisher.class).getResultList();
+    }
+
+    @Override
+    protected void checkConstrains(Publisher entity) { }
+
+    @Override
+    protected void assignEntityValues(Publisher from, Publisher to) {
+        to.setName(from.getName());
+        to.setCountryCode(from.getCountryCode());
+        to.setPostCode(from.getPostCode());
     }
 }

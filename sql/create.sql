@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `author` (
-  `idauthor` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `country` varchar(45) DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
-  PRIMARY KEY (`idauthor`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book` (
-  `idbook` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
   `isbn` varchar(45) NOT NULL,
   `subtitle` varchar(45) DEFAULT NULL,
@@ -62,9 +62,9 @@ CREATE TABLE `book` (
   `pages` int(11) DEFAULT NULL,
   `genre` varchar(45) DEFAULT NULL,
   `fk_publisher` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`idbook`),
+  PRIMARY KEY (`id`),
   KEY `fk_publisher_idx` (`fk_publisher`),
-  CONSTRAINT `fk_publisher` FOREIGN KEY (`fk_publisher`) REFERENCES `publisher` (`idpublisher`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_publisher` FOREIGN KEY (`fk_publisher`) REFERENCES `publisher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,14 +86,14 @@ DROP TABLE IF EXISTS `book_author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book_author` (
-  `idbook_author` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fk_book` int(10) unsigned DEFAULT NULL,
   `fk_author` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`idbook_author`),
+  PRIMARY KEY (`id`),
   KEY `fk_book_idx` (`fk_book`),
   KEY `fk_author_idx` (`fk_author`),
-  CONSTRAINT `fk_author` FOREIGN KEY (`fk_author`) REFERENCES `author` (`idauthor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_book` FOREIGN KEY (`fk_book`) REFERENCES `book` (`idbook`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_author` FOREIGN KEY (`fk_author`) REFERENCES `author` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_book` FOREIGN KEY (`fk_book`) REFERENCES `book` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -115,11 +115,11 @@ DROP TABLE IF EXISTS `publisher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publisher` (
-  `idpublisher` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `countrycode` varchar(8) DEFAULT NULL,
   `postcode` varchar(8) DEFAULT NULL,
-  PRIMARY KEY (`idpublisher`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

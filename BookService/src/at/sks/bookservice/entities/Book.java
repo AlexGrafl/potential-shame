@@ -1,7 +1,8 @@
 package at.sks.bookservice.entities;
 
 import javax.persistence.*;
-import java.sql.Date;
+import javax.xml.bind.annotation.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,12 +11,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "book")
-@NamedQuery(name="Book.selectAll", query = "select n from Book n")
-public class Book {
-    @Id
-    @GeneratedValue
-    @Column(name = "idbook")
-    private long bookId;
+@NamedQueries({
+        @NamedQuery(name = "Book.selectAll", query = "select n from Book n"),
+        @NamedQuery(name = "Book.getBooksByTitle", query = "select b from Book b where b.title like :title")
+})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Book extends AbstractEntity{
+
     private String title;
     private String isbn;
     private String subtitle;
@@ -25,23 +28,25 @@ public class Book {
     private long pages;
     private String genre;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Publisher.class)
     @JoinColumn(name = "fk_publisher")
+    @XmlElement(name = "publisher")
     private Publisher publisher;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Author.class)
     @JoinTable(
             name = "book_author",
-            joinColumns = {@JoinColumn(name = "fk_book", referencedColumnName = "idbook")},
-            inverseJoinColumns = {@JoinColumn(name = "fk_author", referencedColumnName = "idauthor")})
+            joinColumns = @JoinColumn(name = "fk_book", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "fk_author", referencedColumnName = "id"))
+    @XmlElementWrapper
+    @XmlElement(name = "author")
     private List<Author> authors;
 
 
     public Book() {}
 
-    public Book(long bookId, String title, String isbn, String subtitle, Date pubDate, String language,
+    public Book(String title, String isbn, String subtitle, Date pubDate, String language,
                String description, long pages, String genre, Publisher publisher, List<Author> authors) {
-        this.bookId = bookId;
         this.title = title;
         this.isbn = isbn;
         this.subtitle = subtitle;
@@ -52,14 +57,6 @@ public class Book {
         this.genre = genre;
         this.publisher = publisher;
         this.authors = authors;
-    }
-
-    public long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -145,8 +142,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "bookId=" + bookId +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", subtitle='" + subtitle + '\'' +
                 ", pubDate=" + pubDate +

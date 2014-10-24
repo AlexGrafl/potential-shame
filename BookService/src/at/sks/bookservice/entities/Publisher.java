@@ -1,6 +1,8 @@
 package at.sks.bookservice.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 /**
  * @author Alex
@@ -8,30 +10,25 @@ import javax.persistence.*;
 @Entity
 @Table(name = "publisher")
 @NamedQuery(name = "Publisher.selectAll", query = "select n from Publisher n")
-public class Publisher {
-    @Id
-    @GeneratedValue
-    @Column(name = "idpublisher")
-    private long publisherId;
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Publisher extends AbstractEntity{
+
     private String name;
     private String countryCode;
     private String postCode;
 
+    @OneToMany(targetEntity = Book.class, mappedBy = "publisher")
+    @XmlElementWrapper
+    @XmlElement(name = "book")
+    private List<Book> books;
+
     public Publisher() {}
 
-    public Publisher(long publisherId, String name, String countryCode, String postCode) {
-        this.publisherId = publisherId;
+    public Publisher(String name, String countryCode, String postCode) {
         this.name = name;
         this.countryCode = countryCode;
         this.postCode = postCode;
-    }
-
-    public long getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(long publisherId) {
-        this.publisherId = publisherId;
     }
 
     public String getName() {
@@ -58,12 +55,18 @@ public class Publisher {
         this.postCode = postCode;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
 
     @Override
     public String toString() {
         return "Publisher{" +
-                "publisherId=" + publisherId +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", countryCode='" + countryCode + '\'' +
                 ", postCode='" + postCode + '\'' +
                 '}';

@@ -10,9 +10,10 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="ejb-3.2" />
-          <element id="library" level="project" name="JPA 2.0-2.0" />
           <element id="library" level="project" name="libs" />
           <element id="library" level="project" name="org.glassfish.jersey.containers.glassfish:jersey-gf-cdi:2.13" />
+          <element id="library" level="project" name="glassfish-persistence" />
+          <element id="library" level="project" name="jaxb" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="BookService/ejb/EJB" />

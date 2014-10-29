@@ -5,9 +5,6 @@
       <root url="jar://$PROJECT_DIR$/lib/libs/gmbal-api-only.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/ha-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/javax.annotation.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/libs/jaxb-api.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/libs/jaxb-impl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/libs/jaxb-xjc.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/jaxws-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/jaxws-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/jaxws-tools.jar!/" />
@@ -22,8 +19,6 @@
       <root url="jar://$PROJECT_DIR$/lib/libs/stax2-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/streambuffer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libs/woodstox-core-asl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/libs/jaxb-jxc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/libs/jaxb-core.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

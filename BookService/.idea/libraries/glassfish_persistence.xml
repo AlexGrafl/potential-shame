@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="glassfish-persistence">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/glassfish-persistence" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/glassfish-persistence" recursive="false" />
+  </library>
+</component>

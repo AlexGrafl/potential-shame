@@ -13,11 +13,8 @@ import java.util.List;
 @WebService
 public interface BookServiceSOAPService {
     @WebMethod
-    public List<Publisher> getAllPublishers();
-
-    @WebMethod
     public List<Book> getBooksByTitle(String title);
 
     @WebMethod
-    public void createBook(Book book);
+    public void createBook(List<Book> book);
 }

@@ -15,6 +15,7 @@ import java.util.List;
         @NamedQuery(name = "Book.selectAll", query = "select n from Book n"),
         @NamedQuery(name = "Book.getBooksByTitle", query = "select b from Book b where b.title like :title")
 })
+@XmlType(name = "book")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book extends AbstractEntity{
@@ -30,7 +31,7 @@ public class Book extends AbstractEntity{
 
     @ManyToOne(targetEntity = Publisher.class)
     @JoinColumn(name = "fk_publisher")
-    @XmlElement(name = "publisher")
+    @XmlElement
     private Publisher publisher;
 
     @ManyToMany(targetEntity = Author.class)

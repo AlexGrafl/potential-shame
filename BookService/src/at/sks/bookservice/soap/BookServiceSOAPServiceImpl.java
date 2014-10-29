@@ -19,17 +19,9 @@ public class BookServiceSOAPServiceImpl implements BookServiceSOAPService {
     private static final Logger logger = Logger.getLogger(BookServiceSOAPServiceImpl.class.getCanonicalName());
 
     @Inject
-    private PublisherService publisherService;
-
-    @Inject
     private BookService bookService;
 
     public void BookServiceSOAPServiceImpl(){}
-
-    @Override
-    public List<Publisher> getAllPublishers() {
-        return publisherService.getAllPublisher();
-    }
 
     @Override
     public List<Book> getBooksByTitle(String title) {
@@ -37,7 +29,7 @@ public class BookServiceSOAPServiceImpl implements BookServiceSOAPService {
     }
 
     @Override
-    public void createBook(Book book) {
+    public void createBook(List<Book> book) {
         bookService.create(book);
     }
 }

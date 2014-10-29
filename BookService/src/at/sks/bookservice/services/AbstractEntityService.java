@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * @author Alex
@@ -37,8 +38,11 @@ public abstract class AbstractEntityService <T extends AbstractEntity> {
 
     public void create(T entity) {
         checkConstrains(entity);
-
         entityManager.persist(entity);
+    }
+
+    public void create(List<T> entities){
+        entities.forEach(this::create);
     }
 
     public T read(long id){

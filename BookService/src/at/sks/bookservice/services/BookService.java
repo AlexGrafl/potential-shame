@@ -24,11 +24,11 @@ public class BookService extends AbstractEntityService<Book>{
     }
 
     public List<Book> getAllBooks(){
-        return entityManager.createNamedQuery("Book.selectAll", Book.class).getResultList();
+        return entityManager.createNamedQuery("Book.selectAll").getResultList();
     }
 
     public List<Book> getBooksByTitle(String title){
-        return entityManager.createNamedQuery("Book.getBooksByTitle", Book.class)
+        return entityManager.createNamedQuery("Book.getBooksByTitle")
                 .setParameter("title", "%" + title + "%")
                 .getResultList();
     }

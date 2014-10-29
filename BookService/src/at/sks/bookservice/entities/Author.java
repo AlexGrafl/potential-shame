@@ -15,6 +15,7 @@ import java.util.List;
         @NamedQuery(name = "Author.selectAll", query = "select a from Author a"),
         @NamedQuery(name = "Author.getAuthorById", query = "select a from Author a where a.id = :id")
 })
+@XmlType(name = "author")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author extends AbstractEntity {
@@ -26,8 +27,7 @@ public class Author extends AbstractEntity {
 
 
     @ManyToMany (targetEntity = Book.class, mappedBy = "authors")
-    @XmlElementWrapper
-    @XmlElement(name = "book")
+    @XmlTransient
     private List<Book> books;
 
     public Author() { }

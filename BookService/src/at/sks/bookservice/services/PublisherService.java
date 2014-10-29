@@ -20,7 +20,7 @@ public class PublisherService extends AbstractEntityService<Publisher> {
     }
 
     public List<Publisher> getAllPublisher(){
-        return entityManager.createNamedQuery("Publisher.selectAll", Publisher.class).getResultList();
+        return entityManager.createNamedQuery("Publisher.selectAll").getResultList();
     }
 
     @Override

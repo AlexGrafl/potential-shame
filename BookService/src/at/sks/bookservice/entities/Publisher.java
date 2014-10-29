@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "publisher")
 @NamedQuery(name = "Publisher.selectAll", query = "select n from Publisher n")
+@XmlType(name = "publisher")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Publisher extends AbstractEntity{
@@ -19,8 +20,7 @@ public class Publisher extends AbstractEntity{
     private String postCode;
 
     @OneToMany(targetEntity = Book.class, mappedBy = "publisher")
-    @XmlElementWrapper
-    @XmlElement(name = "book")
+    @XmlTransient
     private List<Book> books;
 
     public Publisher() {}

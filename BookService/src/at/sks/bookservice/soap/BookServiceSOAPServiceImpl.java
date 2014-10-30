@@ -30,6 +30,6 @@ public class BookServiceSOAPServiceImpl implements BookServiceSOAPService {
 
     @Override
     public void createBook(List<Book> book) {
-        bookService.create(book);
+        bookService.createBooks(book);
     }
 }

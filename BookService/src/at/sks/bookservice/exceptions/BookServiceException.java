@@ -6,7 +6,7 @@ import javax.ejb.ApplicationException;
 /**
  * @author Alex
  */
-@ApplicationException(rollback = true)
+@ApplicationException
 public class BookServiceException extends RuntimeException{
 
 }

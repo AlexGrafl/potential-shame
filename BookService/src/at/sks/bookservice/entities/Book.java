@@ -29,12 +29,12 @@ public class Book extends AbstractEntity{
     private long pages;
     private String genre;
 
-    @ManyToOne(targetEntity = Publisher.class)
+    @ManyToOne(targetEntity = Publisher.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_publisher")
     @XmlElement
     private Publisher publisher;
 
-    @ManyToMany(targetEntity = Author.class)
+    @ManyToMany(targetEntity = Author.class, cascade = CascadeType.ALL)
     @JoinTable(
             name = "book_author",
             joinColumns = @JoinColumn(name = "fk_book", referencedColumnName = "id"),
@@ -154,5 +154,14 @@ public class Book extends AbstractEntity{
                 ", publisher=" + publisher +
                 ", authors=" + authors +
                 '}';
+    }
+
+    public void addAuthor(Author author) {
+        if(!authors.contains(author)){
+            authors.add(author);
+        }
+        if(author.getBooks() != null && !author.getBooks().contains(this)){
+            author.getBooks().add(this);
+        }
     }
 }

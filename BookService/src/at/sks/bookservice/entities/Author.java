@@ -13,7 +13,8 @@ import java.util.List;
 @Table(name = "author")
 @NamedQueries({
         @NamedQuery(name = "Author.selectAll", query = "select a from Author a"),
-        @NamedQuery(name = "Author.getAuthorById", query = "select a from Author a where a.id = :id")
+        @NamedQuery(name = "Author.getAuthorByName", query = "select a from Author a where a.firstName like :firstName " +
+                "and a.lastName like :lastName")
 })
 @XmlType(name = "author")
 @XmlRootElement

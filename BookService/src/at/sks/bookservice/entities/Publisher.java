@@ -9,7 +9,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "publisher")
-@NamedQuery(name = "Publisher.selectAll", query = "select n from Publisher n")
+@NamedQueries({
+        @NamedQuery(name = "Publisher.selectAll", query = "select p from Publisher p"),
+        @NamedQuery(name = "Publisher.getPublisherByName", query = "select p from Publisher p where p.name like :name")
+    })
 @XmlType(name = "publisher")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

@@ -9,6 +9,7 @@ import at.sks.bookservice.exceptions.PublisherNotFoundException;
 
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -33,25 +34,52 @@ public class BookService extends AbstractEntityService<Book>{
                 .getResultList();
     }
 
-    @Override
-    protected void checkConstrains(Book entity){
-        Publisher publisher = entityManager.find(Publisher.class, entity.getPublisher().getId());
-        if(publisher == null) throw new PublisherNotFoundException();
-        for(Author author : entity.getAuthors()) {
-            Author tempAuthor = entityManager.find(Author.class, author.getId());
-            if(tempAuthor == null) throw new AuthorNotFoundException();
+    public void createBooks(List<Book> books){
+        Author tempAuthor;
+        Publisher publisher;
+        for(Book book : books) {
+            publisher = null;
+            try {
+                if (book.getPublisher().getName() != null) {
+                    publisher = (Publisher) entityManager.createNamedQuery("Publisher.getPublisherByName")
+                            .setParameter("name", book.getPublisher().getName())
+                            .setMaxResults(1)
+                            .getSingleResult();
+                } else {
+                    publisher = entityManager.find(Publisher.class, book.getPublisher().getId());
+                }
+                if (publisher == null) {
+                    throw new PublisherNotFoundException();
+                } else {
+                    book.setPublisher(publisher);
+                }
+            } catch(NoResultException e){
+                throw new PublisherNotFoundException();
+            }
+            try {
+                for (Author author : book.getAuthors()) {
+                    tempAuthor = null;
+                    if (author.getFirstName() != null && author.getLastName() != null) {
+                        tempAuthor = (Author) entityManager.createNamedQuery("Author.getAuthorByName")
+                                .setParameter("firstName", author.getFirstName())
+                                .setParameter("lastName", author.getLastName())
+                                .setMaxResults(1)
+                                .getSingleResult();
+                    } else {
+                        tempAuthor = entityManager.find(Author.class, author.getId());
+                    }
+                    if (tempAuthor == null) {
+                        throw new AuthorNotFoundException();
+                    } else {
+                        book.getAuthors().set(book.getAuthors().indexOf(author), tempAuthor);
+                    }
+                }
+            } catch (NoResultException e){
+                throw new AuthorNotFoundException();
+            }
         }
+        create(books);
+        entityManager.flush();
     }
 
-    @Override
-    protected void assignEntityValues(Book from, Book to) {
-        to.setDescription(from.getDescription());
-        to.setGenre(from.getGenre());
-        to.setIsbn(from.getIsbn());
-        to.setLanguage(from.getLanguage());
-        to.setPages(from.getPages());
-        to.setPubDate(from.getPubDate());
-        to.setTitle(from.getTitle());
-        to.setSubtitle(from.getSubtitle());
-    }
 }

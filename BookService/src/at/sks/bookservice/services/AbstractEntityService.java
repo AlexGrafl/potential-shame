@@ -37,7 +37,6 @@ public abstract class AbstractEntityService <T extends AbstractEntity> {
     }
 
     public void create(T entity) {
-        checkConstrains(entity);
         entityManager.persist(entity);
     }
 
@@ -56,9 +55,5 @@ public abstract class AbstractEntityService <T extends AbstractEntity> {
     public void delete(T entity){
         entityManager.remove(entity);
     }
-
-    protected abstract void checkConstrains(T entity);
-
-    protected abstract void assignEntityValues(T from, T to);
 
 }

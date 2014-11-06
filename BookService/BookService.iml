@@ -50,9 +50,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Mojarra-1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Jersey-2.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss 8.1.0.Final" level="application_server_libraries" />
-    <orderEntry type="library" scope="PROVIDED" name="JBoss 8.1.0.Final - Bean Validation" level="application_server_libraries" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss 8.1.0.Final - CDI: Contexts and Dependency Injection" level="application_server_libraries" />
-    <orderEntry type="library" scope="PROVIDED" name="JBoss 8.1.0.Final - JSON Processing (JSR 353)" level="application_server_libraries" />
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="org.glassfish.jersey.containers.glassfish:jersey-gf-cdi:2.13" level="project" />
     <orderEntry type="library" name="glassfish-persistence" level="project" />

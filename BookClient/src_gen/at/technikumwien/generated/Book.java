@@ -3,16 +3,12 @@ package at.technikumwien.generated;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java-Klasse für book complex type.
+ * <p>Java-Klasse fï¿½r book complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
@@ -62,22 +58,43 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "publisher",
     "authors"
 })
+@XmlRootElement
 public class Book
     extends AbstractEntity
 {
-
+    @XmlAttribute
     protected String title;
+    @XmlAttribute
     protected String isbn;
+    @XmlAttribute
     protected String subtitle;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar pubDate;
+    @XmlAttribute
     protected String language;
+    @XmlAttribute
     protected String description;
+    @XmlAttribute
     protected long pages;
+    @XmlAttribute
     protected String genre;
-    @XmlElement(namespace = "http://soap.bookservice.sks.at/")
+    @XmlElement
     protected Publisher publisher;
     protected Book.Authors authors;
+
+    public Book(String title, String isbn, String subtitle, XMLGregorianCalendar pubDate, String language, String description, long pages, String genre) {
+        this.title = title;
+        this.isbn = isbn;
+        this.subtitle = subtitle;
+        this.pubDate = pubDate;
+        this.language = language;
+        this.description = description;
+        this.pages = pages;
+        this.genre = genre;
+    }
+
+    public Book() {
+    }
 
     /**
      * Ruft den Wert der title-Eigenschaft ab.
@@ -89,6 +106,22 @@ public class Book
      */
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", pubDate=" + pubDate +
+                ", language='" + language + '\'' +
+                ", description='" + description + '\'' +
+                ", pages=" + pages +
+                ", genre='" + genre + '\'' +
+                ", publisher=" + publisher +
+                ", authors=" + authors +
+                '}';
     }
 
     /**
@@ -296,6 +329,9 @@ public class Book
      *     
      */
     public Book.Authors getAuthors() {
+        if(authors == null){
+            authors = new Authors();
+        }
         return authors;
     }
 
@@ -311,9 +347,14 @@ public class Book
         this.authors = value;
     }
 
+    public void addAuthor(Author author) {
+        if(!getAuthors().getAuthor().contains(author)){
+            getAuthors().getAuthor().add(author);
+        }
+    }
 
     /**
-     * <p>Java-Klasse für anonymous complex type.
+     * <p>Java-Klasse fï¿½r anonymous complex type.
      * 
      * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
      * 
@@ -368,6 +409,7 @@ public class Book
             }
             return this.author;
         }
+
 
     }
 

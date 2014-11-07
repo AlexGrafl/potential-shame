@@ -1,10 +1,12 @@
 package at.technikumwien;
 
-import at.technikumwien.generated.Author;
-import at.technikumwien.generated.Book;
-import at.technikumwien.generated.BookServiceSOAPService;
-import at.technikumwien.generated.BookServiceSOAPServiceImplService;
+import at.technikumwien.generated.*;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,10 +17,31 @@ public class BookClient {
         BookServiceSOAPServiceImplService service = new BookServiceSOAPServiceImplService();
         BookServiceSOAPService port = service.getBookServiceSOAPServiceImplPort();
 
-        List<Book> list = port.getBooksByTitle(args[0]);
+        /*Publisher publisher = new Publisher("Polska Mafia", "PL", "1234");
+        Author author = new Author("Victor", "Stabrawa", "Poland", null);
+        Author author2 = new Author("Alex", "Grafl", "Austria", null);
+        Book book = new Book("Harry Potter", "1322132112", "Der Stein der Waisen", null, "DE", "sadsasadsda", 253, "Fantasy");
+        book.setPublisher(publisher);
+        book.addAuthor(author);
+        book.addAuthor(author2);
 
-        for(Book book: list) {
-            System.out.println("Title: " + book.getTitle() + ": " + book.getSubtitle());
-        }
+        File file = new File("file.xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance(Book.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+        // output pretty printed
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        jaxbMarshaller.marshal(book, file);
+        jaxbMarshaller.marshal(book, System.out);*/
+
+        File file = new File("file.xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance(BookList.class);
+
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        BookList books = (BookList) jaxbUnmarshaller.unmarshal(file);
+        port.createBook(books.books);
+        System.out.println(books);
+
     }
 }

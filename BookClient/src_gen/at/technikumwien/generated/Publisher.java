@@ -1,13 +1,11 @@
 
 package at.technikumwien.generated;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
- * <p>Java-Klasse für publisher complex type.
+ * <p>Java-Klasse fï¿½r publisher complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
@@ -33,13 +31,26 @@ import javax.xml.bind.annotation.XmlType;
     "countryCode",
     "postCode"
 })
+@XmlRootElement
 public class Publisher
     extends AbstractEntity
 {
-
+    @XmlAttribute
     protected String name;
+    @XmlAttribute
     protected String countryCode;
+    @XmlAttribute
     protected String postCode;
+
+    public Publisher() {
+    }
+
+    public Publisher(String name, String countryCode, String postCode) {
+
+        this.name = name;
+        this.countryCode = countryCode;
+        this.postCode = postCode;
+    }
 
     /**
      * Ruft den Wert der name-Eigenschaft ab.

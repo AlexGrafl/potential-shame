@@ -18,8 +18,11 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Publisher extends AbstractEntity{
 
+    @XmlAttribute
     private String name;
+    @XmlAttribute
     private String countryCode;
+    @XmlAttribute
     private String postCode;
 
     @OneToMany(targetEntity = Book.class, mappedBy = "publisher")

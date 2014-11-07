@@ -20,13 +20,21 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book extends AbstractEntity{
 
+    @XmlAttribute
     private String title;
+    @XmlAttribute
     private String isbn;
+    @XmlAttribute
     private String subtitle;
+    @XmlAttribute
     private Date pubDate;
+    @XmlAttribute
     private String language;
+    @XmlAttribute
     private String description;
+    @XmlAttribute
     private long pages;
+    @XmlAttribute
     private String genre;
 
     @ManyToOne(targetEntity = Publisher.class, cascade = CascadeType.ALL)

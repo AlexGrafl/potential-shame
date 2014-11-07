@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<books>
+    <book title="Harry Potter" isbn="1322132112" subtitle="Der Stein der Waisen" language="DE" description="sadsasadsda" pages="253" genre="Fantasy">
+        <publisher name="Polska Mafia" countryCode="PL" postCode="1234"/>
+        <authors>
+            <author firstName="Victor" lastName="Stabrawa" country="Poland"/>
+            <author firstName="Alex" lastName="Grafl" country="Austria"/>
+        </authors>
+    </book>
+    <book title="Harry Potter" isbn="2323123232" subtitle="Die Kammer des Schreckens" language="DE" description="sadsasadsda" pages="253" genre="Fantasy">
+        <publisher name="Polska Mafia" countryCode="PL" postCode="1234"/>
+        <authors>
+            <author firstName="Victor" lastName="Stabrawa" country="Poland"/>
+            <author firstName="Alex" lastName="Grafl" country="Austria"/>
+        </authors>
+    </book>
+</books>

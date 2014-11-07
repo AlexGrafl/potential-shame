@@ -1,13 +1,12 @@
 
 package at.technikumwien.generated;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
+import java.util.Date;
 
 
 /**
- * <p>Java-Klasse für author complex type.
+ * <p>Java-Klasse fï¿½r author complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
@@ -35,14 +34,28 @@ import javax.xml.bind.annotation.XmlType;
     "country",
     "birthDate"
 })
+@XmlRootElement
 public class Author
     extends AbstractEntity
 {
-
+    @XmlAttribute
     protected String firstName;
+    @XmlAttribute
     protected String lastName;
+    @XmlAttribute
     protected String country;
+    @XmlAttribute
     protected Date birthDate;
+
+    public Author() {
+    }
+
+    public Author(String firstName, String lastName, String country, Date birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.country = country;
+        this.birthDate = birthDate;
+    }
 
     /**
      * Ruft den Wert der firstName-Eigenschaft ab.

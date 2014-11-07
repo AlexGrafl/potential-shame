@@ -2,7 +2,7 @@ package at.sks.bookservice.entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,9 +21,13 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author extends AbstractEntity {
 
+    @XmlAttribute
     private String firstName;
+    @XmlAttribute
     private String lastName;
+    @XmlAttribute
     private String country;
+    @XmlAttribute
     private Date birthDate;
 
 

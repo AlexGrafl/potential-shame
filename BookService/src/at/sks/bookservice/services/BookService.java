@@ -82,4 +82,9 @@ public class BookService extends AbstractEntityService<Book>{
         entityManager.flush();
     }
 
+    public void updateBook(Book book)
+    {
+        update(book);
+    }
+
 }

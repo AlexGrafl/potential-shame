@@ -13,6 +13,17 @@ import java.util.List;
 @Table(name = "book")
 @NamedQueries({
         @NamedQuery(name = "Book.selectAll", query = "select n from Book n"),
+        @NamedQuery(name = "Book.updateBookById", query ="update Book b set " +
+                "b.title = :title, " +
+                "b.isbn = :isbn," +
+                "b.subtitle = :subtitle," +
+                "b.pubDate = :pubDate," +
+                "b.language = :language," +
+                "b.description = :description," +
+                "b.pages = :pages," +
+                "b.genre = :genre " +
+                "where b.id = :id"),
+
         @NamedQuery(name = "Book.getBooksByTitle", query = "select b from Book b where b.title like :title")
 })
 @XmlType(name = "book")

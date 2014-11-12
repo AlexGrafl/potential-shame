@@ -1,11 +1,14 @@
 package at.sks.bookservice.rest;
 
+import at.sks.bookservice.entities.Author;
 import at.sks.bookservice.entities.Book;
+import at.sks.bookservice.entities.Publisher;
 import at.sks.bookservice.services.BookService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,21 +24,21 @@ public class BooksRessource {
     private BookService bookService;
 
     @GET
-    public List<Book> getBooks() {
+    public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     @GET
     @Path("/{title}")
-    public List<Book> getBooksByTitle(@PathParam("title") String title) {
-
+    public List<Book> getBooksByTitle(@PathParam("title") String title)
+    {
         return bookService.getBooksByTitle(title);
     }
 
     @GET
     @Path("/{id}")
-    public Book getBookById(@PathParam("id") long id) {
-
+    public Book getBookById(@PathParam("id") long id)
+    {
         return bookService.read(id);
     }
 
@@ -44,10 +47,14 @@ public class BooksRessource {
         return null;
     }
 
+
     @PUT
-    @Path("/{id}")
-    public Book updateBook(@PathParam("id") String id, String title) {
-        return null;
+    @Path("/update/{id}")
+    public Book updateBook(@PathParam("id") String id, String title, String isbn, String subtitle, Date pubDate, String language, String description, long pages, String genre, Publisher publisher, List<Author> authors)
+    {
+        Book updBook = new Book(title, isbn, subtitle, pubDate, language, description, pages, genre, publisher, authors);
+        bookService.update(updBook);
+        return updBook;
     }
 
     @DELETE

@@ -7,7 +7,11 @@ import at.sks.bookservice.services.BookService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
@@ -18,10 +22,13 @@ import java.util.List;
 @Path("/book")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({MediaType.APPLICATION_JSON})
-public class BooksRessource {
+public class BooksResource {
 
     @Inject
     private BookService bookService;
+
+    @Context
+    UriInfo ui;
 
     @GET
     public List<Book> getAllBooks() {
@@ -30,36 +37,37 @@ public class BooksRessource {
 
     @GET
     @Path("/{title}")
-    public List<Book> getBooksByTitle(@PathParam("title") String title)
+    public List<Book> readBooksByTitle(@PathParam("title") String title)
     {
         return bookService.getBooksByTitle(title);
     }
 
     @GET
     @Path("/{id}")
-    public Book getBookById(@PathParam("id") long id)
+    public Book readBookById(@PathParam("id") long id)
     {
         return bookService.read(id);
     }
 
     @POST
-    public Book addBook(@PathParam("id") String id, @QueryParam("title") String title) {
-        return null;
+    public Response createBook(Book book) {
+        bookService.create(book);
+
+        URI newsURI = ui.getAbsolutePathBuilder().path(book.getId().toString()).build();
+        return Response.created(newsURI).build();
     }
 
 
     @PUT
-    @Path("/update/{id}")
-    public Book updateBook(@PathParam("id") String id, String title, String isbn, String subtitle, Date pubDate, String language, String description, long pages, String genre, Publisher publisher, List<Author> authors)
-    {
-        Book updBook = new Book(title, isbn, subtitle, pubDate, language, description, pages, genre, publisher, authors);
-        bookService.update(updBook);
-        return updBook;
+    public Response updateBook( Book book){
+        bookService.update(book);
+
+        URI newsURI = ui.getAbsolutePathBuilder().path(book.getId().toString()).build();
+        return Response.created(newsURI).build();
     }
 
     @DELETE
-    @Path("/{id}")
-    public Book removeBook(@PathParam("id") String id) {
-        return null;
+    public void deleteBook(Book book) {
+        bookService.delete(book);
     }
 }

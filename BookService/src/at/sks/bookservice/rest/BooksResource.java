@@ -1,8 +1,6 @@
 package at.sks.bookservice.rest;
 
-import at.sks.bookservice.entities.Author;
 import at.sks.bookservice.entities.Book;
-import at.sks.bookservice.entities.Publisher;
 import at.sks.bookservice.services.BookService;
 
 import javax.inject.Inject;
@@ -12,7 +10,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -59,15 +56,17 @@ public class BooksResource {
 
 
     @PUT
-    public Response updateBook( Book book){
-        bookService.update(book);
+    @Path("/{id}")
+    public Response updateBook(@PathParam("id") long id, Book book){
+        bookService.update(id, book);
 
         URI newsURI = ui.getAbsolutePathBuilder().path(book.getId().toString()).build();
         return Response.created(newsURI).build();
     }
 
     @DELETE
-    public void deleteBook(Book book) {
-        bookService.delete(book);
+    @Path("/{id}")
+    public void deleteBook(@PathParam("id") long id) {
+        bookService.delete(id);
     }
 }

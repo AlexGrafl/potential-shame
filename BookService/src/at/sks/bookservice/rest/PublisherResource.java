@@ -51,15 +51,17 @@ public class PublisherResource {
 
 
     @PUT
-    public Response updatePublisher(Publisher publisher){
-        publisherService.update(publisher);
+    @Path("/{id}")
+    public Response updatePublisher(@PathParam("id") long id, Publisher publisher){
+        publisherService.update(id, publisher);
 
         URI newsURI = ui.getAbsolutePathBuilder().path(publisher.getId().toString()).build();
         return Response.created(newsURI).build();
     }
 
     @DELETE
-    public void deletePublisher(Publisher publisher) {
-        publisherService.delete(publisher);
+    @Path("/{id}")
+    public void deletePublisher(@PathParam("id") long id) {
+        publisherService.delete(id);
     }
 }

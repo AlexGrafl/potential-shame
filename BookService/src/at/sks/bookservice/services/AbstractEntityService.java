@@ -48,12 +48,19 @@ public abstract class AbstractEntityService <T extends AbstractEntity> {
         return entityManager.find(entityClass, id);
     }
 
-    public T update(T entity){
+    public T update(long id, T entity){
+        T oldEntity = read(id);
+        if(oldEntity != null){
+            merge(oldEntity, entity);
+            entity.setId(id);
+        }
+
         return entityManager.merge(entity);
     }
 
-    public void delete(T entity){
-        entityManager.remove(entity);
+    public void delete(long id){
+        entityManager.remove(read(id));
     }
 
+    abstract void merge(T oldEntity, T newEntity);
 }

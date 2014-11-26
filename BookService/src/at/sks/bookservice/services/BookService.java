@@ -83,4 +83,18 @@ public class BookService extends AbstractEntityService<Book>{
         entityManager.flush();
     }
 
+
+    @Override
+    void merge(Book oldEntity, Book newEntity) {
+        if(!newEntity.getGenre().equals(oldEntity.getGenre())) oldEntity.setGenre(newEntity.getGenre());
+        if(!newEntity.getDescription().equals(oldEntity.getDescription())) oldEntity.setDescription(newEntity.getDescription());
+        if(!newEntity.getLanguage().equals(oldEntity.getLanguage())) oldEntity.setLanguage(newEntity.getLanguage());
+        if(!newEntity.getIsbn().equals(oldEntity.getIsbn())) oldEntity.setIsbn(newEntity.getIsbn());
+        if(!newEntity.getTitle().equals(oldEntity.getTitle())) oldEntity.setTitle(newEntity.getTitle());
+        if(!newEntity.getSubtitle().equals(oldEntity.getSubtitle())) oldEntity.setSubtitle(newEntity.getSubtitle());
+        if(newEntity.getPages() != oldEntity.getPages()) oldEntity.setPages(newEntity.getPages());
+        if(newEntity.getPubDate() != oldEntity.getPubDate()) oldEntity.setPubDate(newEntity.getPubDate());
+    }
+
+
 }

@@ -1,9 +1,7 @@
 package at.sks.bookservice.rest;
 
 import at.sks.bookservice.entities.Author;
-import at.sks.bookservice.entities.Publisher;
 import at.sks.bookservice.services.AuthorService;
-import at.sks.bookservice.services.PublisherService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -51,15 +49,17 @@ public class AuthorResource {
 
 
     @PUT
-    public Response updateAuthor(Author author){
-        authorService.update(author);
+    @Path("/{id}")
+    public Response updateAuthor(@PathParam("id") long id, Author author){
+        authorService.update(id, author);
 
         URI newsURI = ui.getAbsolutePathBuilder().path(author.getId().toString()).build();
         return Response.created(newsURI).build();
     }
 
     @DELETE
-    public void deleteAuthor(Author author) {
-        authorService.delete(author);
+    @Path("/{id}")
+    public void deleteAuthor(@PathParam("id") long id) {
+        authorService.delete(id);
     }
 }

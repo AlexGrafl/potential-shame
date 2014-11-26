@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * @author Alex
  */
-@Transactional
-@Stateful
+@Stateless
+@LocalBean
 public class PublisherService extends AbstractEntityService<Publisher> {
 
     public PublisherService() {

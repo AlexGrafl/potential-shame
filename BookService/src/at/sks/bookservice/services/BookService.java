@@ -7,6 +7,7 @@ import at.sks.bookservice.exceptions.AuthorNotFoundException;
 import at.sks.bookservice.exceptions.BookServiceException;
 import at.sks.bookservice.exceptions.PublisherNotFoundException;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -16,8 +17,8 @@ import java.util.List;
 /**
  * @author Alex
  */
-@Transactional
-@Stateful
+@Stateless
+@LocalBean
 public class BookService extends AbstractEntityService<Book>{
 
     public BookService() {

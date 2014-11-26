@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="lib/jquery.js"></script>
+<script>
+
+function getPublisherDetails(id){
+    $.ajax({
+        url: "http://localhost:8080/BookService_war_exploded/resources/publisher/" + id,
+        type: "GET",
+        headers: {
+            Accept: "application/json"
+        },
+        success: function(publisher) {
+            alert("ID: "+ publisher.id + "\nName: " + publisher.name + "\nCountry Code: "+ publisher.countryCode
+                    + "\nPost Code: " + publisher.postCode);
+        }
+    });
+}
+
+
+$(function() {
+	$.ajax({
+		url: "http://localhost:8080/BookService_war_exploded/resources/publisher",
+		type: "GET",
+		headers: {          
+	    	Accept: "application/json"
+		},
+		success: function(publisherArray) {
+            var html = "";
+            publisherArray.forEach( function(publisher) {
+                html += "<br/><a style='cursor: pointer;' onclick='getPublisherDetails(\""+ publisher.id
+                        + "\")'>" + publisher.name + "</li>";
+            });
+            $("#publisher").html(html);
+        }
+	});
+});
+</script>
+</head>
+<body>
+<h1>Publisher</h1>
+<div id = "publisher"></div>
+</body>
+</html>

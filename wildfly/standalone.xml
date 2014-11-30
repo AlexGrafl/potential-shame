@@ -153,13 +153,9 @@
                 <datasource jta="false" jndi-name="java:jboss/datasources/NewsDS" pool-name="NewsDS" enabled="true" use-ccm="false">
                     <connection-url>jdbc:mysql://localhost:3306/news</connection-url>
                     <driver>mysql</driver>
-                    <pool>
-                        <min-pool-size>10</min-pool-size>
-                        <max-pool-size>25</max-pool-size>
-                    </pool>
                     <security>
-                        <user-name>news_user</user-name>
-                        <password>news</password>
+                        <user-name>root</user-name>
+                        <password>root</password>
                     </security>
                     <validation>
                         <validate-on-match>false</validate-on-match>
@@ -171,16 +167,10 @@
                 </datasource>
                 <datasource jta="false" jndi-name="java:jboss/datasources/BookServiceDS" pool-name="BookServiceDS" enabled="true" use-ccm="false">
                     <connection-url>jdbc:mysql://localhost:3306/bsdb</connection-url>
-                    <driver-class>com.mysql.jdbc.Driver</driver-class>
                     <driver>mysql</driver>
-                    <transaction-isolation>TRANSACTION_REPEATABLE_READ</transaction-isolation>
-                    <pool>
-                        <min-pool-size>10</min-pool-size>
-                        <max-pool-size>25</max-pool-size>
-                    </pool>
                     <security>
-                        <user-name>news_user</user-name>
-                        <password>news</password>
+                        <user-name>root</user-name>
+                        <password>root</password>
                     </security>
                     <validation>
                         <validate-on-match>false</validate-on-match>
@@ -191,11 +181,11 @@
                     </statement>
                 </datasource>
                 <drivers>
-                    <driver name="mysql" module="com.mysql">
-                        <driver-class>com.mysql.jdbc.Driver</driver-class>
-                    </driver>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="mysql" module="com.mysql">
+                        <driver-class>com.mysql.jdbc.Driver</driver-class>
                     </driver>
                 </drivers>
             </datasources>
@@ -340,6 +330,17 @@
         <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
         <subsystem xmlns="urn:jboss:domain:security:1.2">
             <security-domains>
+                <security-domain name="BookServiceDS">
+                    <authentication>
+                        <login-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="java:jboss/datasources/BookServiceDS"/>
+                            <module-option name="principalsQuery" value="SELECT password AS 'Password' FROM t_user WHERE username=?"/>
+                            <module-option name="rolesQuery" value="SELECT r.rolename, 'Roles' FROM t_user u INNER JOIN t_user_role ur ON u.userid = ur.userid INNER JOIN t_role r ON ur.roleid = r.roleid WHERE u.username = ?"/>
+                            <module-option name="hashAlgorithm" value="SHA-512"/>
+                            <module-option name="hashEncoding" value="hex"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
                 <security-domain name="other" cache-type="default">
                     <authentication>
                         <login-module code="Remoting" flag="optional">
@@ -429,4 +430,9 @@
         </outbound-socket-binding>
     </socket-binding-group>
 
+    <deployments>
+        <deployment name="BookService_war_exploded.war" runtime-name="BookService_war_exploded.war">
+            <fs-exploded path="C:\Users\Victor\IdeaProjects\SKS_Repo\BookService\out\artifacts\BookService_war_exploded.war"/>
+        </deployment>
+    </deployments>
 </server>

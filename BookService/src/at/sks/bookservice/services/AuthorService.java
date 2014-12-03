@@ -4,9 +4,7 @@ import at.sks.bookservice.entities.Author;
 import at.sks.bookservice.entities.Publisher;
 
 import javax.ejb.LocalBean;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**

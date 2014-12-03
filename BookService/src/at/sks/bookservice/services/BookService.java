@@ -4,14 +4,12 @@ import at.sks.bookservice.entities.Author;
 import at.sks.bookservice.entities.Book;
 import at.sks.bookservice.entities.Publisher;
 import at.sks.bookservice.exceptions.AuthorNotFoundException;
-import at.sks.bookservice.exceptions.BookServiceException;
 import at.sks.bookservice.exceptions.PublisherNotFoundException;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**

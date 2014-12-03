@@ -1,14 +1,9 @@
 package at.sks.bookservice.services;
 
 import at.sks.bookservice.entities.AbstractEntity;
-import at.sks.bookservice.exceptions.BookServiceException;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**

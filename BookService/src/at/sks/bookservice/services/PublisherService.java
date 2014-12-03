@@ -3,9 +3,7 @@ package at.sks.bookservice.services;
 import at.sks.bookservice.entities.Publisher;
 
 import javax.ejb.LocalBean;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**

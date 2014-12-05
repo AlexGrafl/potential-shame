@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1"?>
+<books>
+  <book isbn="1112223339"
+        title="Java Enterprise Edition 7"
+		subtitle="Die Neuerungen"
+		description="Dieses Buch beschreibt die Neuerungen in der Java EE 7-Plattform."
+		pages="123"
+		language="DE">
+    <publisher name="IT-Verlag"
+	           postcode="1010"
+			   countrycode="AT" />
+    <authors>
+      <author firstname="Bernhard"
+	          lastname="Tigerfels"
+			  birthdate="1955-01-01" />
+    </authors>
+  </book>
+  <book isbn="4445556661"
+        title=".NET 4.5"
+		subtitle="The Changes"
+		description="This book describes the changes in the .NET 4.5 platform."
+		pages="456"
+		language="EN">
+    <publisher name="lion.press"
+	           postcode="60599"
+			   countrycode="DE" />
+    <authors>
+      <author firstname="Claudia"
+	          lastname="Sonnenschein"
+			  birthdate="1981-05-05" />
+      <author firstname="Jane und John"
+	          lastname="Doe"
+			  birthdate="1900-01-01" />					  
+    </authors>
+  </book>
+</books>

@@ -21,9 +21,9 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author extends AbstractEntity {
 
-    @XmlAttribute
+    @XmlAttribute(name="firstname")
     private String firstName;
-    @XmlAttribute
+    @XmlAttribute(name="lastname")
     private String lastName;
     @XmlAttribute
     private String country;

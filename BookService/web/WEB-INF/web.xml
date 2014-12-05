@@ -54,17 +54,22 @@
             <url-pattern>/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>BooksAdmin</role-name>
-            <role-name>BooksUser</role-name>
+            <role-name>BSRead</role-name>
+            <role-name>BSWrite</role-name>
+            <role-name>BSOther</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
     <security-role>
-        <role-name>BooksAdmin</role-name>
+        <role-name>BSRead</role-name>
     </security-role>
     <security-role>
-        <role-name>BooksUser</role-name>
+        <role-name>BSWrite</role-name>
     </security-role>
+    <security-role>
+        <role-name>BSOther</role-name>
+    </security-role>
+
 </web-app>

@@ -38,11 +38,11 @@ import java.util.Date;
 public class Author
     extends AbstractEntity
 {
-    @XmlAttribute
+    @XmlAttribute(name="firstname")
     protected String firstName;
-    @XmlAttribute
+    @XmlAttribute(name="lastname")
     protected String lastName;
-    @XmlAttribute
+    @XmlAttribute(name="countrycode")
     protected String country;
     @XmlAttribute
     protected Date birthDate;

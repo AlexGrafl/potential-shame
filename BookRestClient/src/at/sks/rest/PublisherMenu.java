@@ -4,6 +4,7 @@ import at.sks.rest.entities.Publisher;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
@@ -15,6 +16,11 @@ import java.util.Scanner;
  */
 public class PublisherMenu {
     private List<Publisher> publishers = new ArrayList<>();
+
+    WebTarget publisherTarget = ClientBuilder
+            .newClient()
+            .register(new RequestFilter("writer", "123"))
+            .target("http://localhost:8080/BookService_war_exploded/resources/publisher");
 
     public void readPublisher(){
         while(true){
@@ -30,10 +36,9 @@ public class PublisherMenu {
     }
 
     private void sendPublisher() {
+
         for(Publisher publisher : publishers) {
-            Response response = ClientBuilder
-                    .newClient()
-                    .target("http://localhost:8080/BookService_war_exploded/resources/publisher")
+            Response response = publisherTarget
                     .request(MediaType.APPLICATION_JSON)
                     .post(Entity.entity(publisher, MediaType.APPLICATION_JSON));
             if(response.getStatus() >= 300){

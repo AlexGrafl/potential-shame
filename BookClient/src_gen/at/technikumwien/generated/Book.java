@@ -80,7 +80,9 @@ public class Book
     protected String genre;
     @XmlElement
     protected Publisher publisher;
-    protected Book.Authors authors;
+    @XmlElementWrapper(name = "authors")
+    @XmlElement(name="author")
+    protected List<Author> authors;
 
     public Book(String title, String isbn, String subtitle, XMLGregorianCalendar pubDate, String language, String description, long pages, String genre) {
         this.title = title;
@@ -328,9 +330,9 @@ public class Book
      *     {@link Book.Authors }
      *     
      */
-    public Book.Authors getAuthors() {
+    public List<Author> getAuthors() {
         if(authors == null){
-            authors = new Authors();
+            authors = new ArrayList();
         }
         return authors;
     }
@@ -343,13 +345,13 @@ public class Book
      *     {@link Book.Authors }
      *     
      */
-    public void setAuthors(Book.Authors value) {
+    public void setAuthors(List<Author> value) {
         this.authors = value;
     }
 
     public void addAuthor(Author author) {
-        if(!getAuthors().getAuthor().contains(author)){
-            getAuthors().getAuthor().add(author);
+        if(!getAuthors().contains(author)){
+            getAuthors().add(author);
         }
     }
 

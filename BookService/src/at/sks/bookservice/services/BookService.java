@@ -6,11 +6,14 @@ import at.sks.bookservice.entities.Publisher;
 import at.sks.bookservice.exceptions.AuthorNotFoundException;
 import at.sks.bookservice.exceptions.PublisherNotFoundException;
 
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import java.util.List;
+
 
 /**
  * @author Alex
@@ -22,6 +25,7 @@ public class BookService extends AbstractEntityService<Book>{
     public BookService() {
         super(Book.class);
     }
+
 
     public List<Book> getAllBooks(){
         return entityManager.createNamedQuery("Book.selectAll").getResultList();
@@ -45,7 +49,9 @@ public class BookService extends AbstractEntityService<Book>{
                             .setMaxResults(1)
                             .getSingleResult();
                 } else {
-                    publisher = entityManager.find(Publisher.class, book.getPublisher().getId());
+                    if(book.getPublisher().getId() != null) {
+                        publisher = entityManager.find(Publisher.class, book.getPublisher().getId());
+                    } else throw new PublisherNotFoundException();
                 }
                 if (publisher == null) {
                     throw new PublisherNotFoundException();
@@ -65,7 +71,9 @@ public class BookService extends AbstractEntityService<Book>{
                                 .setMaxResults(1)
                                 .getSingleResult();
                     } else {
-                        tempAuthor = entityManager.find(Author.class, author.getId());
+                        if(author.getId() != null) {
+                            tempAuthor = entityManager.find(Author.class, author.getId());
+                        } else throw new AuthorNotFoundException();
                     }
                     if (tempAuthor == null) {
                         throw new AuthorNotFoundException();

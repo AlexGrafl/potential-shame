@@ -58,7 +58,7 @@ public class Book extends AbstractEntity{
             name = "book_author",
             joinColumns = @JoinColumn(name = "fk_book", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "fk_author", referencedColumnName = "id"))
-    @XmlElementWrapper
+    @XmlElementWrapper(name= "authors")
     @XmlElement(name = "author")
     private List<Author> authors;
 

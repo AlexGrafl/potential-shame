@@ -34,11 +34,15 @@ INSERT INTO t_books (title, text) VALUES ('title1', 'text1');
 INSERT INTO t_books (title, text) VALUES ('title2', 'text2');
 INSERT INTO t_books (title, text) VALUES ('title3', 'text3');
 
-INSERT INTO t_user (userid, username, password) VALUES (1, 'myadmin', SHA2('topsecret', 512));
-INSERT INTO t_user (userid, username, password) VALUES (2, 'myuser', SHA2('topsecret', 512));
+INSERT INTO t_user (userid, username, password) VALUES (1, 'reader', SHA2('123', 512));
+INSERT INTO t_user (userid, username, password) VALUES (2, 'writer', SHA2('123', 512));
+INSERT INTO t_user (userid, username, password) VALUES (3, 'other', SHA2('123', 512));
 
-INSERT INTO t_role (roleid, rolename) VALUES (1, 'BooksAdmin');
-INSERT INTO t_role (roleid, rolename) VALUES (2, 'BookssUser');
+INSERT INTO t_role (roleid, rolename) VALUES (1, 'BSRead');
+INSERT INTO t_role (roleid, rolename) VALUES (2, 'BSWrite');
+INSERT INTO t_role (roleid, rolename) VALUES (3, 'BSOther');
 
 INSERT INTO t_user_role (userid, roleid) VALUES (1, 1);
+INSERT INTO t_user_role (userid, roleid) VALUES (2, 1);
 INSERT INTO t_user_role (userid, roleid) VALUES (2, 2);
+INSERT INTO t_user_role (userid, roleid) VALUES (3, 3);

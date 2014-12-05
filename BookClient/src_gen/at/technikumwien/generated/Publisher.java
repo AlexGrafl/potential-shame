@@ -37,9 +37,9 @@ public class Publisher
 {
     @XmlAttribute
     protected String name;
-    @XmlAttribute
+    @XmlAttribute(name="countrycode")
     protected String countryCode;
-    @XmlAttribute
+    @XmlAttribute(name="postcode")
     protected String postCode;
 
     public Publisher() {

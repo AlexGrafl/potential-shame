@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1"?>
+<books>
+  <book isbn="1231231238"
+        title="Java EE 7"
+		subtitle="Einführung für Studierende"
+		description="Dieses Buch führt Studierende in die Java EE 7-Plattform ein."
+		pages="987"
+		language="DE">
+    <publisher name="IT-Verlag"
+	           postcode="1010"
+			   countrycode="AT" />
+    <authors>
+      <author firstname="Siegfried"
+	          lastname="Maier"
+			  birthdate="1975-07-09" />
+    </authors>
+  </book>
+  <book isbn="4564564560"
+        title=".NET 4.5"
+		subtitle="Introduction for Students"
+		description="This book introduces the .NET 4.5 platform to students."
+		pages="567"
+		language="EN">
+    <publisher name="lion.press"
+	           postcode="60599"
+			   countrycode="DE" />
+    <authors>
+      <author firstname="Bernhard"
+	          lastname="Tigerfels"
+			  birthdate="1955-01-01" />
+      <author firstname="Claudia"
+	          lastname="Sonnenschein"
+			  birthdate="1981-05-05" />
+    </authors>
+  </book>
+</books>

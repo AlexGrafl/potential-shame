@@ -9,7 +9,8 @@ function getPublisherDetails(id){
         url: "http://localhost:8080/BookService_war_exploded/resources/publisher/" + id,
         type: "GET",
         headers: {
-            Accept: "application/json"
+            Accept: "application/json",
+			Authorization: "Basic " + btoa("writer:123")
         },
         success: function(publisher) {
             alert("ID: "+ publisher.id + "\nName: " + publisher.name + "\nCountry Code: "+ publisher.countryCode
@@ -24,7 +25,8 @@ $(function() {
 		url: "http://localhost:8080/BookService_war_exploded/resources/publisher",
 		type: "GET",
 		headers: {          
-	    	Accept: "application/json"
+	    	Accept: "application/json",
+			Authorization: "Basic " + btoa("writer:123")
 		},
 		success: function(publisherArray) {
             var html = "";

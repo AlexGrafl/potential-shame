@@ -52,6 +52,7 @@
         <web-resource-collection>
             <web-resource-name>Books</web-resource-name>
             <url-pattern>/*</url-pattern>
+			<http-method-omission>OPTIONS</http-method-omission>
         </web-resource-collection>
         <auth-constraint>
             <role-name>BSRead</role-name>
